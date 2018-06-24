@@ -1,0 +1,12 @@
+svg.rage{
+	display : inline-block;
+	height : 1em;
+	width : 1.3em;
+	line-height : inherit;
+	transform: translateY(10%);
+	fill: currentColor;
+}
+svg.rage-2x { font-size: 2em; }
+svg.rage-3x { font-size: 3em; }
+svg.rage-4x { font-size: 4em; }
+svg.rage-5x { font-size: 5em; }

@@ -1,0 +1,36 @@
+include icons
+
+doctype html
+html
+	head
+		title Icons list
+		link(rel='stylesheet' href='../dist/css/font-rage.css')
+		link(rel='stylesheet' href='../dist/css/symbols-rage.css')
+		style(type='text/css').
+			body,html{font-size:17px;font-family:Arial}
+			p{font-size:1rem;}
+			.container{max-width:1200px;margin:auto;overflow:hidden;}
+			.colsed{overflow:hidden;columns: 200px 4;}
+			.colsed>h3:nth-child(1){margin-top:0;}
+			.rage{margin-right:15px;}
+	body
+		include ../../dist/svg/symbols.svg
+		.container
+			h1 Free font RAGE
+			h2 Icon font
+			div.colsed
+				for group in icons_list
+					h3= group.title
+					for icon in group.icons
+						p
+							i.rage.rage-fw(class='rage-'+icon)
+							span= icon[0].toUpperCase() + icon.substring(1)
+			hr
+			h2 Icon symbols
+			div.colsed
+				for group in icons_list
+					h3= group.title
+					for icon in group.icons
+						p
+							svg.rage: use(xlink:href='#rage-'+icon)
+							span= icon[0].toUpperCase() + icon.substring(1)
