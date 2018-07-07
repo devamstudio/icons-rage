@@ -3,8 +3,9 @@ svg.rage{
 	height : 1em;
 	width : 1.3em;
 	line-height : inherit;
-	transform: translateY(10%);
 	fill: currentColor;
+	top: .125em;
+	position: relative;
 }
 svg.rage-2x { font-size: 2em; }
 svg.rage-3x { font-size: 3em; }
