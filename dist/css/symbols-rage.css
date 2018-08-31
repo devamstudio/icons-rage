@@ -1,11 +1,10 @@
 svg.rage{
-	display : inline-block;
+	display : inline-flex;
+	vertical-align: text-top;
 	height : 1em;
 	width : 1.3em;
-	line-height : inherit;
 	fill: currentColor;
-	top: .125em;
-	position: relative;
+	pointer-events: none;
 }
 svg.rage-2x { font-size: 2em; }
 svg.rage-3x { font-size: 3em; }
