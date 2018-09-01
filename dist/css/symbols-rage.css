@@ -1,6 +1,8 @@
 svg.rage{
 	display : inline-flex;
-	vertical-align: text-top;
+	text-rendering:auto;
+	vertical-align: -.1333em;
+	line-height: 1;
 	height : 1em;
 	width : 1.3em;
 	fill: currentColor;
