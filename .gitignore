@@ -3,4 +3,5 @@ node_modules
 
 # Files
 **/desktop.ini
+package-lock.json
 icons-list.gsheet

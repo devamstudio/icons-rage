@@ -13,12 +13,12 @@ gulp.task('iconfont', function(done){
 			normalize: false,
 			prependUnicode: true,
 			startUnicode: 0xE001,
-			//fontHeight: 550,
+			//fontHeight: 530,
 			formats: ['ttf', 'eot', 'woff','truetype','svg','woff2'],
 			copyright: 'iAmStudio',
 			centerHorizontally: false,
-			//ascent : 50,
-			descent : 60,
+			ascent : 400,
+			descent : 50,
 		}));
 	async.parallel([
 		function handleGlyphs(cb) {
