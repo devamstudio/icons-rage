@@ -5,6 +5,23 @@ const consolidate = require('gulp-consolidate');
 const pug = require('gulp-pug');
 const plumber = require('gulp-plumber');
 const svgSprite = require("gulp-svg-sprites");
+const fs = require('fs');
+const package = require('./package.json')
+
+//Data
+var font_data = {
+	title: 'Rage Iconfont',
+	name: package.name,
+	version: package.version,
+	prefix: 'rage-',
+	options: {
+		ascent: 550,
+		descent: 50,
+		font_size: 600,
+		formats: []
+	},
+	glyphs: {}
+}
  
 gulp.task('iconfont', function(done){
 	var iconStream = gulp.src(['source/svg/*.svg'])
@@ -13,12 +30,12 @@ gulp.task('iconfont', function(done){
 			normalize: false,
 			prependUnicode: true,
 			startUnicode: 0xE001,
-			//fontHeight: 530,
+			fontHeight: font_data.options.font_size,
 			formats: ['ttf', 'eot', 'woff','truetype','svg','woff2'],
 			copyright: 'iAmStudio',
 			centerHorizontally: false,
-			ascent : 400,
-			descent : 50,
+			ascent : font_data.options.ascent,
+			descent : font_data.options.descent,
 		}));
 	async.parallel([
 		function handleGlyphs(cb) {
@@ -34,6 +51,11 @@ gulp.task('iconfont', function(done){
 					.pipe(gulp.dest('dist/css/'))
 					.on('finish', cb);
 				console.log(glyphs, options);
+
+				font_data.glyphs = glyphs;
+				font_data.options.formats = options.formats;
+
+				fs.writeFile('dist/font_data.json', JSON.stringify(font_data), cb);
 			});
 		},
 		function handleFonts(cb) {
