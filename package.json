@@ -1,18 +1,18 @@
 {
   "name": "icons-rage",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "",
   "main": "Gulpfile.js",
   "dependencies": {
-    "async": "^2.6.1",
-    "gulp": "^3.9.1",
-    "gulp-consolidate": "^0.2.0",
-    "gulp-iconfont": "^10.0.1"
+    "async": "latest",
+    "gulp": "latest",
+    "gulp-consolidate": "latest",
+    "gulp-iconfont": "latest"
   },
   "devDependencies": {
-    "gulp-plumber": "^1.2.0",
-    "gulp-pug": "^4.0.1",
-    "gulp-svg-sprites": "^4.1.2"
+    "gulp-plumber": "latest",
+    "gulp-pug": "latest",
+    "gulp-svg-sprites": "latest"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
