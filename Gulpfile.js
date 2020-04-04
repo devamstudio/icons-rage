@@ -1,8 +1,8 @@
 const async = require('async');
 const gulp = require('gulp');
-const iconfont = require('gulp-iconfont');
+const gulpIconfont = require('gulp-iconfont');
 const consolidate = require('gulp-consolidate');
-const pug = require('gulp-pug');
+const gulpPug = require('gulp-pug');
 const plumber = require('gulp-plumber');
 const svgSprite = require("gulp-svg-sprites");
 const fs = require('fs');
@@ -23,9 +23,9 @@ var font_data = {
 	glyphs: {}
 }
  
-gulp.task('iconfont', function(done){
+function iconfont(done){
 	var iconStream = gulp.src(['source/svg/*.svg'])
-		.pipe(iconfont({ 
+		.pipe(gulpIconfont({ 
 			fontName: 'rage-icons',
 			normalize: false,
 			prependUnicode: true,
@@ -64,21 +64,32 @@ gulp.task('iconfont', function(done){
 				.on('finish', cb);
 		}
 	], done);
-});
+};
 
-gulp.task('symbols', function () {
-	gulp.src('source/symbols/*.svg')
+function symbols(done) {
+	return gulp.src('source/symbols/*.svg')
 		.pipe(svgSprite({
 			mode:'symbols',
 			svgId: 'rage-%f',
 			preview: false,
 		}))
 		.pipe(gulp.dest('dist/'));
-});
 
-gulp.task('pug', function buildHTML() {
+	done();
+};
+
+function pug(done) {
 	gulp.src('source/test/index.pug')
 		.pipe( plumber() )
-		.pipe( pug({ pretty: true }) )
+		.pipe( gulpPug({ pretty: true }) )
 		.pipe( gulp.dest( 'test/' ) );
-});
+
+	done();
+};
+
+
+exports.iconfont = iconfont;
+exports.symbols = symbols;
+exports.pug = pug;
+
+exports.default = gulp.series(iconfont, symbols, pug);
