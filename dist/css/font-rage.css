@@ -85,4 +85,5 @@ i.rage-fw {
 .rage-upload:before { content: "\e031" }
 .rage-user:before { content: "\e032" }
 .rage-video:before { content: "\e033" }
-.rage-volume:before { content: "\e034" }
+.rage-volume:before { content: "\e034" }
+.rage-bell:before { content: "\e035" }
