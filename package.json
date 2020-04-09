@@ -1,8 +1,11 @@
 {
   "name": "rage-icons",
-  "version": "1.4.1",
+  "version": "2.0.0",
+  "publishConfig": { 
+    "registry": "https://npm.pkg.github.com/" 
+  },
   "description": "",
-  "main": "Gulpfile.js",
+  "main": "index.js",
   "dependencies": {
     "async": "latest",
     "gulp": "latest",
@@ -26,7 +29,7 @@
   "keywords": [
     "icons"
   ],
-  "author": "iAmStudio",
+  "author": "iamstudio",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/devamstudio/icons-rage/issues"
