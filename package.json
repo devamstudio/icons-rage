@@ -1,6 +1,9 @@
 {
   "name": "rage-icons",
   "version": "2.0.0",
+  "publishConfig": { 
+    "registry": "https://npm.pkg.github.com/" 
+  },
   "description": "",
   "main": "Gulpfile.js",
   "dependencies": {
