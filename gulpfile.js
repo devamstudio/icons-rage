@@ -107,16 +107,7 @@ function symbols() {
 		.pipe(gulp.dest(`${buildPath}symbols`));
 };
 
-function build(cb){
-	buildPath = 'dist';
-	fontsPath = 'fonts';
-	return gulp.series(iconfont, symbols);
-	//cb();
-}
-
 exports.iconfont = iconfont;
 exports.symbols = symbols;
 
 exports.default = gulp.series(iconfont, symbols);
-
-exports.build = build;
