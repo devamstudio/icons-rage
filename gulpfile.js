@@ -12,7 +12,7 @@ const package = require('./package.json')
 //Data
 var buildPath = (argv.build === undefined) ? '' : 'dist/';
 var fontsPath = 'fonts';
-var font_data = {
+var font_data = JSON.parse(fs.readFileSync('./font_data.json')) ? JSON.parse(fs.readFileSync('./font_data.json')) : {
 	title: 'Rage Iconfont',
 	name: package.name,
 	version: package.version,
@@ -64,12 +64,25 @@ function iconfont(done){
 					.pipe(gulp.dest(`${buildPath}css/`))
 					.on('finish', () => {
 						
-						console.log(glyphs, options);
-
-						font_data.glyphs = glyphs;
+						glyphs.forEach(function(raw_item) {
+							let founded = font_data.glyphs.filter((source_item) => {
+								return source_item.name == raw_item.name;
+							});
+							console.log(founded);
+							if(founded){
+								founded[0].categories = founded[0].categories ? founded[0].categories : ['all'];
+								founded[0].keywords = founded[0].keywords ? founded[0].keywords : [];
+								founded[0].name = raw_item.name;
+								founded[0].unicode = raw_item.unicode;
+							} else {
+								raw_item.categories = ['all'];
+								raw_item.keywords = [];
+								font_data.glyphs.push(raw_item);
+							}
+						})
 						font_data.options.formats = options.formats;
 
-						fs.writeFile(`${buildPath}font_data.json`, JSON.stringify(font_data), cb);
+						fs.writeFile(`${buildPath}font_data.json`, JSON.stringify(font_data, null, 4), cb);
 					});
 			});
 		},
@@ -94,16 +107,7 @@ function symbols() {
 		.pipe(gulp.dest(`${buildPath}symbols`));
 };
 
-function build(cb){
-	buildPath = 'dist';
-	fontsPath = 'fonts';
-	return gulp.series(iconfont, symbols);
-	//cb();
-}
-
 exports.iconfont = iconfont;
 exports.symbols = symbols;
 
 exports.default = gulp.series(iconfont, symbols);
-
-exports.build = build;
