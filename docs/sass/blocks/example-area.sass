@@ -1,0 +1,29 @@
+.example-area
+    background-color: white
+    padding: 60px 0 40px 0
+
+    //States
+    &-enter-active, &-leave-active
+        transition: all 1s    
+    &-enter, &-leave-to
+        opacity: 0
+        transform: translateY(-50%)
+
+    // Elems
+    .example-area__string
+        line-height: 1
+        position: relative
+
+    // Helpers
+    .example-area__helper
+        position: absolute
+        width: 100%
+        height: .5px
+        background-color: red
+        &--ascend
+            top: 0
+        &--x-height
+        &--baseline
+        &--descend
+            bottom: 0
+        

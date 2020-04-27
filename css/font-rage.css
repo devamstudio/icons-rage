@@ -86,4 +86,5 @@ i.rage-fw {
 .rage-user:before { content: "\e032" }
 .rage-video:before { content: "\e033" }
 .rage-volume:before { content: "\e034" }
-.rage-bell:before { content: "\e035" }
+.rage-bell:before { content: "\e035" }
+.rage-coronavirus:before { content: "\e036" }

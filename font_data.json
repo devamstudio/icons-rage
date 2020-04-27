@@ -1,1 +1,613 @@
-{"title":"Rage Iconfont","name":"rage-icons","version":"1.4.1","prefix":"rage-","options":{"ascent":550,"descent":50,"font_size":600,"formats":["ttf","eot","woff","truetype","svg","woff2"]},"glyphs":[{"name":"album","unicode":[""]},{"name":"arrow-bottom","unicode":[""]},{"name":"arrow-left","unicode":[""]},{"name":"arrow-right","unicode":[""]},{"name":"arrow-top","unicode":[""]},{"name":"book","unicode":[""]},{"name":"branch","unicode":[""]},{"name":"burger","unicode":[""]},{"name":"busket-truck","unicode":[""]},{"name":"checkboxes","unicode":[""]},{"name":"chevron-bottom","unicode":[""]},{"name":"chevron-left","unicode":[""]},{"name":"chevron-right","unicode":[""]},{"name":"chevron-top","unicode":[""]},{"name":"close","unicode":[""]},{"name":"code","unicode":[""]},{"name":"compare","unicode":[""]},{"name":"dashboard","unicode":[""]},{"name":"dots","unicode":[""]},{"name":"download","unicode":[""]},{"name":"envelope","unicode":[""]},{"name":"folder","unicode":[""]},{"name":"group","unicode":[""]},{"name":"hand-watches","unicode":[""]},{"name":"heart-filled","unicode":[""]},{"name":"heart","unicode":[""]},{"name":"image","unicode":[""]},{"name":"list","unicode":[""]},{"name":"locked","unicode":[""]},{"name":"loop","unicode":[""]},{"name":"map-point","unicode":[""]},{"name":"maximize","unicode":[""]},{"name":"minimize","unicode":[""]},{"name":"mix","unicode":[""]},{"name":"mobile","unicode":[""]},{"name":"notes","unicode":[""]},{"name":"pause","unicode":[""]},{"name":"play-back","unicode":[""]},{"name":"play-forward","unicode":[""]},{"name":"play","unicode":[""]},{"name":"print","unicode":[""]},{"name":"search","unicode":[""]},{"name":"section","unicode":[""]},{"name":"settings","unicode":[""]},{"name":"soundtrack","unicode":[""]},{"name":"ticket","unicode":[""]},{"name":"unlocked","unicode":[""]},{"name":"upload","unicode":[""]},{"name":"user","unicode":[""]},{"name":"video","unicode":[""]},{"name":"volume","unicode":[""]},{"name":"bell","unicode":[""]}]}
+{
+    "title": "Rage Iconfont",
+    "name": "rage-icons",
+    "version": "1.4.1",
+    "prefix": "rage-",
+    "options": {
+        "ascent": 550,
+        "descent": 50,
+        "font_size": 600,
+        "formats": [
+            "ttf",
+            "eot",
+            "woff",
+            "truetype",
+            "svg",
+            "woff2"
+        ]
+    },
+    "glyphs": [
+        {
+            "name": "album",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "music"
+            ],
+            "keywords": [
+                "album",
+                "music",
+                "cover",
+                "disc"
+            ]
+        },
+        {
+            "name": "arrow-bottom",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": [
+                "ui",
+                "arrows"
+            ]
+        },
+        {
+            "name": "arrow-left",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "arrow-right",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "arrow-top",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "book",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "branch",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "development"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "burger",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "busket-truck",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "checkboxes",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "chevron-bottom",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "chevron-left",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "chevron-right",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "chevron-top",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "close",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "code",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "development"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "compare",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "dashboard",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "dots",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "download",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "envelope",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "contacts"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "folder",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "group",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "hand-watches",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "heart-filled",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "heart",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "image",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "list",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "locked",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "loop",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface",
+                "music"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "map-point",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "contacts"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "maximize",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "minimize",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "mix",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface",
+                "music"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "mobile",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "notes",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "pause",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface",
+                "music"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "play-back",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface",
+                "music"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "play-forward",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface",
+                "music"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "play",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface",
+                "music"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "print",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "search",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "section",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "settings",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "soundtrack",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface",
+                "music"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "ticket",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "unlocked",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "upload",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "user",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "video",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "volume",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface",
+                "music"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "bell",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "interface"
+            ],
+            "keywords": []
+        },
+        {
+            "name": "coronavirus",
+            "unicode": [
+                ""
+            ],
+            "categories": [
+                "all",
+                "medicine"
+            ],
+            "keywords": []
+        }
+    ]
+}

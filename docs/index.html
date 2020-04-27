@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список иконок</title>
+    <link rel="stylesheet" href="./css/font-rage.css">
+    <link rel="stylesheet" href="./css/app.css">
+    <style>
+        h1 {
+            display: block;
+            hyphens: auto;
+            font-size: 2.1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="upper-header container">
+            <span 
+                class="upper-header__logo">Rage Iconfont</span>
+            <div
+                class="upper-header__iamstudio">project of <a href="https://i-am.studio/">iAmStudio</a></div>
+        </div>
+        <hr>
+        <div class="font-page">
+            <header class="font-page__header container">
+                <div class="input-header">
+                    <label class="input-header__search">
+                        <i class="rage rage-search"></i>
+                        <input 
+                            class="input-header__searchfield input-header__field"
+                            type="search"
+                            placeholder="Search items"
+                            v-model="searchString">
+                    </label>
+                    <label class="input-header__example">
+                        <input 
+                            class="input-header__examplefield input-header__field"
+                            type="search"
+                            placeholder="Type example"
+                            v-model="exampleString">
+                    </label>
+                </div>
+            </header>
+            <hr>
+            <div class="overflow">
+                <transition
+                    name="example-area"
+                    appear>
+                    <div 
+                        class="example-area"
+                        v-if="exampleString.length != 0"
+                        v-cloak>
+                        <div 
+                            class="example-area__string"
+                            :style="`font-size:${example.fontSize}px;`"
+                            ref="exampleString">
+                            <div class="example-area__helper example-area__helper--ascend"></div>
+                            <div 
+                                class="example-area__helper example-area__helper--x-height"
+                                :style="helperXHeightPosition"></div>
+                            <div 
+                                class="example-area__helper example-area__helper--baseline"
+                                :style="helperBaselinePosition"></div>
+                            <div class="example-area__helper example-area__helper--descend"></div>
+                            <div class="container">
+                                <i
+                                    :class="`rage rage-${example.iconName}`"></i>
+                                {{ exampleString }}
+                            </div>
+                        </div>
+                    </div>
+                </transition>
+            </div>
+            <div
+                class="container"
+                v-if="font"
+                v-cloak>
+                
+                <h4
+                    style="margin-bottom: .5em;">Categories</h4>
+                <div 
+                    class="icon-categories-list"
+                    v-cloak>
+                    <span 
+                        class="icon-categories-list__item"
+                        v-for="category in categories"
+                        :class="selectCategories == category ? 'icon-categories-list__item--active' : ''"
+                        @click="selectCategories = category">{{ category }}</span>
+                </div>
+                <transition-group 
+                    name="icon-boxes-list__item"
+                    tag="div"
+                    class="icon-boxes-list"
+                    appear
+                    v-cloak>
+                    <div 
+                        class="icon-box icon-boxes-list__item"
+                        v-for="glyph in filteredGlyphs"
+                        :key="glyph.name">
+                        <div 
+                            class="icon-box__icon"
+                            @click="example.iconName = glyph.name">
+                            <i 
+                                :class='`rage rage-${glyph.name}`'></i>
+                        </div> 
+                        <span 
+                            class="icon-box__title">{{ glyph.name }}</span>
+                        <span 
+                            class="icon-box__class">.{{ font.prefix + glyph.name }}</span>
+                    </div>
+                </transition-group>
+                        
+            </div>      
+        </div>      
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                font: {},
+                categories: [],
+                selectCategories: 'all',
+                searchString: '',
+                exampleString: ' Dashboard',
+                example: {
+                    iconName: 'album',
+                    fontSize: 60
+                }
+            },
+            created() {
+                this.getIconsData();
+            },
+            methods: {
+                getIconsData() {
+                    fetch('./font_data.json')
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((data) => {
+                        this.font = data;
+                        this.getCategories(data.glyphs);
+                    });
+                },
+                getCategories(items){
+                    let tmp_categories = [];
+                    items.map((item) => { item.categories.map((cat) => { tmp_categories.push(cat); }) });
+                    this.categories = new Set(tmp_categories);
+                }
+            },
+            computed: {
+                filteredGlyphs(){
+                    return this.font.glyphs && (this.selectCategories != 'all' || this.searchString.length != 0) ? this.font.glyphs.filter((glyph) => {
+                        let searchProps = glyph.name + glyph.categories.join('') + glyph.keywords.join('');
+                        if(glyph.categories.includes(this.selectCategories) && (searchProps.indexOf(this.searchString) + 1)){
+                            return glyph;
+                        }
+                    }) : this.font.glyphs;
+                },
+                helperXHeightPosition() {
+                    if(this.font.glyphs){
+                        return {
+                            top: (this.font.options.font_size - this.font.options.ascent) / this.font.options.font_size * 100 + '%'
+                        }
+                    }
+                },
+                helperBaselinePosition() {
+                    if(this.font.glyphs){
+                        return {
+                            bottom:  this.font.options.descent / this.font.options.font_size * 100 + '%'
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

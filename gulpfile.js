@@ -2,17 +2,19 @@ const async = require('async');
 const gulp = require('gulp');
 const gulpIconfont = require('gulp-iconfont');
 const consolidate = require('gulp-consolidate');
-const gulpPug = require('gulp-pug');
 const plumber = require('gulp-plumber');
+var sass = require('gulp-sass');
+var sass_globbing = require('gulp-sass-glob');
 const argv = require('yargs').argv;
 const svgSprite = require("gulp-svg-sprites");
 const fs = require('fs');
-const package = require('./package.json')
+const package = require('./package.json');
+var server = require("browser-sync").create();
 
 //Data
 var buildPath = (argv.build === undefined) ? '' : 'dist/';
 var fontsPath = 'fonts';
-var font_data = {
+var font_data = JSON.parse(fs.readFileSync('./font_data.json')) ? JSON.parse(fs.readFileSync('./font_data.json')) : {
 	title: 'Rage Iconfont',
 	name: package.name,
 	version: package.version,
@@ -64,12 +66,24 @@ function iconfont(done){
 					.pipe(gulp.dest(`${buildPath}css/`))
 					.on('finish', () => {
 						
-						console.log(glyphs, options);
-
-						font_data.glyphs = glyphs;
+						glyphs.forEach(function(raw_item) {
+							let founded = font_data.glyphs.filter((source_item) => {
+								return source_item.name == raw_item.name;
+							});
+							if(founded[0]){
+								founded[0].categories = founded[0].categories ? founded[0].categories : ['all'];
+								founded[0].keywords = founded[0].keywords ? founded[0].keywords : [];
+								founded[0].name = raw_item.name;
+								founded[0].unicode = raw_item.unicode;
+							} else {
+								raw_item.categories = ['all'];
+								raw_item.keywords = [];
+								font_data.glyphs.push(raw_item);
+							}
+						})
 						font_data.options.formats = options.formats;
 
-						fs.writeFile(`${buildPath}font_data.json`, JSON.stringify(font_data), cb);
+						fs.writeFile(`${buildPath}font_data.json`, JSON.stringify(font_data, null, 4), cb);
 					});
 			});
 		},
@@ -94,16 +108,41 @@ function symbols() {
 		.pipe(gulp.dest(`${buildPath}symbols`));
 };
 
-function build(cb){
-	buildPath = 'dist';
-	fontsPath = 'fonts';
-	return gulp.series(iconfont, symbols);
-	//cb();
-}
+function docsMarkup(){
+	return gulp.src('docs/**/*.html')
+		.pipe(gulp.dest(`${buildPath}`));
+};
+
+function docsStyles(){
+	return gulp.src('docs//sass/*.sass')
+		.pipe(sass_globbing())
+		.pipe(sass({outputStyle: 'compressed' }))
+		.pipe(gulp.dest(`${buildPath}css/`));
+};
+
+
+function serve() {
+	server.init({
+		server: "dist/",
+		notify: false,
+		open: true,
+		cors: true,
+		ui: false
+	});
+
+	gulp.watch(['./docs/**/*.html'], docsMarkup);
+	gulp.watch(['./docs/**/*.sass'], docsStyles);
+	gulp.watch(['./svgs/*.svg'], iconfont);
+	gulp.watch("source/*.html").on("change", server.reload);
+};
+
+
 
 exports.iconfont = iconfont;
 exports.symbols = symbols;
+exports.docsMarkup = docsMarkup;
+exports.docsStyles = docsStyles;
+exports.serve = serve;
 
-exports.default = gulp.series(iconfont, symbols);
-
-exports.build = build;
+exports.default = gulp.series(iconfont, symbols, docsMarkup, docsStyles);
+exports.dev = gulp.series(iconfont, symbols, docsMarkup, docsStyles, serve);
