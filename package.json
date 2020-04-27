@@ -10,13 +10,16 @@
     "gulp-iconfont": "latest"
   },
   "devDependencies": {
+    "browser-sync": "^2.26.7",
     "gulp-plumber": "latest",
     "gulp-pug": "latest",
+    "gulp-sass": "^4.1.0",
+    "gulp-sass-glob": "^1.1.0",
     "gulp-svg-sprites": "latest",
     "yargs": "^15.3.1"
   },
   "scripts": {
-    "dev": "gulp",
+    "dev": "gulp dev --build",
     "build": "gulp --build"
   },
   "repository": {

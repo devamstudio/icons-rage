@@ -1,0 +1,32 @@
+.input-header
+    display: flex
+    flex-direction: column
+    padding: 0 .5em
+    @media (min-width:$screen--tablet)
+        flex-direction: row
+        border: 1px solid lightgray
+            radius: 3rem
+        background-color: white
+    .input-header__search
+        display: flex
+        flex-grow: 1
+        padding: .5rem 0
+        align-items: center
+        @media (min-width:$screen--tablet)
+            border:
+                right: 1px solid lightgray
+    .input-header__searchfield
+    .input-header__example
+        display: flex
+        flex-grow: 1
+        padding: .5rem 0
+    .input-header__examplefield
+
+    .input-header__field
+        border: none
+        flex-grow: 1
+        outline: none
+        margin: 0 .5rem
+        line-height: 1.3
+        @media (max-width:$screen--tablet)
+            padding: .3rem .2rem

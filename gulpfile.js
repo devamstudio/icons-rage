@@ -2,12 +2,14 @@ const async = require('async');
 const gulp = require('gulp');
 const gulpIconfont = require('gulp-iconfont');
 const consolidate = require('gulp-consolidate');
-const gulpPug = require('gulp-pug');
 const plumber = require('gulp-plumber');
+var sass = require('gulp-sass');
+var sass_globbing = require('gulp-sass-glob');
 const argv = require('yargs').argv;
 const svgSprite = require("gulp-svg-sprites");
 const fs = require('fs');
-const package = require('./package.json')
+const package = require('./package.json');
+var server = require("browser-sync").create();
 
 //Data
 var buildPath = (argv.build === undefined) ? '' : 'dist/';
@@ -68,8 +70,7 @@ function iconfont(done){
 							let founded = font_data.glyphs.filter((source_item) => {
 								return source_item.name == raw_item.name;
 							});
-							console.log(founded);
-							if(founded){
+							if(founded[0]){
 								founded[0].categories = founded[0].categories ? founded[0].categories : ['all'];
 								founded[0].keywords = founded[0].keywords ? founded[0].keywords : [];
 								founded[0].name = raw_item.name;
@@ -107,7 +108,41 @@ function symbols() {
 		.pipe(gulp.dest(`${buildPath}symbols`));
 };
 
+function docsMarkup(){
+	return gulp.src('docs/**/*.html')
+		.pipe(gulp.dest(`${buildPath}`));
+};
+
+function docsStyles(){
+	return gulp.src('docs//sass/*.sass')
+		.pipe(sass_globbing())
+		.pipe(sass({outputStyle: 'compressed' }))
+		.pipe(gulp.dest(`${buildPath}css/`));
+};
+
+
+function serve() {
+	server.init({
+		server: "dist/",
+		notify: false,
+		open: true,
+		cors: true,
+		ui: false
+	});
+
+	gulp.watch(['./docs/**/*.html'], docsMarkup);
+	gulp.watch(['./docs/**/*.sass'], docsStyles);
+	gulp.watch(['./svgs/*.svg'], iconfont);
+	gulp.watch("source/*.html").on("change", server.reload);
+};
+
+
+
 exports.iconfont = iconfont;
 exports.symbols = symbols;
+exports.docsMarkup = docsMarkup;
+exports.docsStyles = docsStyles;
+exports.serve = serve;
 
-exports.default = gulp.series(iconfont, symbols);
+exports.default = gulp.series(iconfont, symbols, docsMarkup, docsStyles);
+exports.dev = gulp.series(iconfont, symbols, docsMarkup, docsStyles, serve);
